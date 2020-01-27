@@ -8,9 +8,10 @@ const CompanySchema = new Schema({
     CIF: {type: String, required: true}, 
     email: {type: String, required: true}, 
     logo: {type: String, required: true}, 
-    address: {type: String, required: true}, 
+    address: {type: String, required: true},
+    city: {type: String, required: true}, 
     sector: {type: String, required: true},
-    score: {type: String, required: true}, 
+    score: {type: Number, required: true}, 
     comments: {type: Array(String), required: true}    
   });
 
