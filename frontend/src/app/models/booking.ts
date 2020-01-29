@@ -18,4 +18,6 @@ export class Booking {
         this.time = time;
         this.price = price;
     }
+
+    
 }

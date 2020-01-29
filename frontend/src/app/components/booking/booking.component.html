@@ -3,25 +3,34 @@
         <div class="col s5">
             <div class="card">
                 <div class="card-content">
-                    <form #bookingform="ngForm" (ngSubmit)="addUser(userform)">
-                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] = "teacherService.selectedTeacher._id">
+                    <form #bookingform="ngForm" (ngSubmit)="addBooking(bookingform)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] = "bookingService.selectedBooking._id">
                        <div class="row">
                            <div class="input-field col s12">
-                               <input type="text" name="name" #name = "ngModel" [(ngModel)] = "teacherService.selectedTeacher.name" placeholder="Enter your name">
+                               <input type="text" name="id_user" #id_user = "ngModel" [(ngModel)] = "bookingService.selectedBooking.id_user" placeholder="Enter your user_id">
                             </div>
                             <div class="input-field col s12">
-                                <input type="text" name="surname" #surname = "ngModel" [(ngModel)] = "teacherService.selectedTeacher.surname" placeholder="Enter your surname">
+                                <input type="text" name="id_company" #id_company = "ngModel" [(ngModel)] = "bookingService.selectedBooking.id_company" placeholder="Enter your company_id">
                              </div>
                              <div class="input-field col s12">
-                                <input type="text" name="area" #area = "ngModel" [(ngModel)] = "teacherService.selectedTeacher.area" placeholder="Enter your area">
+                                <input type="text" name="user" #user = "ngModel" [(ngModel)] = "bookingService.selectedBooking.user" placeholder="Enter your user">
                              </div>
                              <div class="input-field col s12">
-                                <input type="number" name="salary" #salary = "ngModel" [(ngModel)] = "teacherService.selectedTeacher.salary" placeholder="Enter your salary">
+                                <input type="text" name="company" #company = "ngModel" [(ngModel)] = "bookingService.selectedBooking.company" placeholder="Enter your company">
+                             </div>
+                             <div class="input-field col s12">
+                                <input type="text" name="date" #date = "ngModel" [(ngModel)] = "bookingService.selectedBooking.date" placeholder="Enter your date">
+                             </div>
+                             <div class="input-field col s12">
+                                <input type="text" name="time" #time = "ngModel" [(ngModel)] = "bookingService.selectedBooking.time" placeholder="Enter your time">
+                             </div>
+                             <div class="input-field col s12">
+                                <input type="text" name="price" #price = "ngModel" [(ngModel)] = "bookingService.selectedBooking.price" placeholder="Enter your price">
                              </div>
                              <div class="card-action">
                                  <div class="input-field col s12">
-                                     <button class="btn" (click) = "resetForm(teacherform)">Clear</button>
-                                     <button class="btn right">Save</button>
+                                     <button class="btn" (click) = "resetForm(bookingform)">Clear</button>
+                                     <button class="btn right" (click)="addBooking(bookingform)">Save</button>
                                  </div>
                              </div>
                        </div> 
@@ -32,21 +41,25 @@
         <div class="col s7">
             <table>
                 <thead>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Area</th>
-                    <th>Operations</th>
+                    <th>User</th>
+                    <th>Company</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Price</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor = "let teacher of teacherService.teachers">
-                        <td>{{teacher.name}}</td>
-                        <td>{{teacher.surname}}</td>
-                        <td>{{teacher.area}}</td>
+                    <tr *ngFor = "let booking of bookingService.bookings">
+                        <td>{{booking.user}}</td>
+                        <td>{{booking.company}}</td>
+                        <td>{{booking.date}}</td>
+                        <td>{{booking.time}}</td>
+                        <td>{{booking.price}}</td>
+                        
                         <td>
-                            <a (click) = "editTeacher(teacher)">
+                            <a (click) = "editBooking(booking)">
                                 <i class="material-icons">edit</i>
                             </a>
-                            <a (click) = "deleteTeacher(teacher._id)">
+                            <a (click) = "deleteBooking(booking)">
                                 <i class="material-icons">delete</i>
                             </a>
                         </td>

@@ -14,4 +14,20 @@ export class CompaniesService {
   constructor(private http: HttpClient) { 
     this.selectedCompany = new Companies();
   }
+
+  getCompanies() {
+    return this.http.get(this.URL_API);
+  }
+
+  createCompany(company: Companies){
+    return this.http.post(this.URL_API, company);
+  }
+
+  editCompany(company: Companies) {
+    return this.http.put(this.URL_API + `/${company._id}`, company);
+  }
+
+  deleteCompany(_id : String){
+    return this.http.delete(this.URL_API + `/${_id}`);
+  }
 }

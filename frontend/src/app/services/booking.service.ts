@@ -10,9 +10,25 @@ export class BookingService {
 
   readonly URL_API = 'http://localhost:4000/api/booking';
   selectedBooking: Booking;
-  booking: Booking[];
+  bookings: Booking[];
 
   constructor(private http: HttpClient) {
     this.selectedBooking = new Booking();
    }
+
+   getBookings() {
+    return this.http.get(this.URL_API);
+  }
+
+  createBooking(booking: Booking){
+    return this.http.post(this.URL_API, booking);
+  }
+
+  editBooking(booking: Booking) {
+    return this.http.put(this.URL_API + `/${booking._id}`, booking);
+  }
+
+  deleteBooking(_id : String){
+    return this.http.delete(this.URL_API + `/${_id}`);
+  }
 }

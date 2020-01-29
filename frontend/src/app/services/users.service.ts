@@ -15,4 +15,21 @@ export class UsersService {
   constructor(private http: HttpClient) {
     this.selectedUser = new Users();
    }
+
+   getUsers() {
+    return this.http.get(this.URL_API);
+  }
+
+  createUser(user: Users){
+    return this.http.post(this.URL_API, user);
+  }
+
+  editUser(user: Users) {
+    return this.http.put(this.URL_API + `/${user._id}`, user);
+  }
+
+  deleteUser(_id : String){
+    return this.http.delete(this.URL_API + `/${_id}`);
+  }
 }
+
